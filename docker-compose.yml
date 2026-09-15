@@ -3,7 +3,8 @@ services:
     image: mongo:7
     container_name: cqrs-query-mongo
     ports:
-      - "27017:27017"
+      # Host port 27018 to avoid clashing with a local MongoDB on 27017.
+      - "27018:27017"
     volumes:
       - mongo-data:/data/db
 

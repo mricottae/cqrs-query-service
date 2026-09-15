@@ -2,7 +2,7 @@ spring:
   application:
     name: cqrs-query-service
   mongodb:
-    uri: mongodb://localhost:27017/products_query
+    uri: mongodb://localhost:27018/products_query
 
 server:
   port: 8080

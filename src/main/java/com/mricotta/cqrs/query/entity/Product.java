@@ -39,4 +39,7 @@ public class Product {
     private Instant createdAt;
 
     private Instant updatedAt;
+
+    /** Version of the last applied event; older or duplicate events are ignored. */
+    private Long version;
 }

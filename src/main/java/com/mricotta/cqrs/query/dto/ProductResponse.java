@@ -10,5 +10,6 @@ public record ProductResponse(
         BigDecimal price,
         Integer stock,
         Instant createdAt,
-        Instant updatedAt) {
+        Instant updatedAt,
+        Long version) {
 }

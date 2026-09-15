@@ -70,6 +70,6 @@ class ProductServiceImplTest {
 
     private static ProductResponse response(Long id) {
         var now = Instant.now();
-        return new ProductResponse(id, "Mouse", "Wireless mouse", new BigDecimal("19.99"), 10, now, now);
+        return new ProductResponse(id, "Mouse", "Wireless mouse", new BigDecimal("19.99"), 10, now, now, 0L);
     }
 }

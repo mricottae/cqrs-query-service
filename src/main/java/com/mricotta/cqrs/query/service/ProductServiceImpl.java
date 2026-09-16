@@ -6,6 +6,7 @@ import com.mricotta.cqrs.query.mapper.ProductMapper;
 import com.mricotta.cqrs.query.repository.ProductRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> getProducts() {
-        return productMapper.toDtoList(productRepository.findAll());
+        return productMapper.toDtoList(productRepository.findAll(Sort.by(Sort.Direction.ASC, "id")));
     }
 
     @Override

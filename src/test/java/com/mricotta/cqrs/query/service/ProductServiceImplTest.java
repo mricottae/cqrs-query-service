@@ -21,6 +21,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Sort;
 
 @ExtendWith(MockitoExtension.class)
 class ProductServiceImplTest {
@@ -35,15 +36,17 @@ class ProductServiceImplTest {
     private ProductServiceImpl productService;
 
     @Test
-    void getProducts_returnsMappedList() {
+    void getProducts_returnsMappedListSortedById() {
+        var sortedById = Sort.by(Sort.Direction.ASC, "id");
         var products = List.of(Product.builder().id(1L).build(), Product.builder().id(2L).build());
         var expected = List.of(response(1L), response(2L));
-        given(productRepository.findAll()).willReturn(products);
+        given(productRepository.findAll(sortedById)).willReturn(products);
         given(productMapper.toDtoList(products)).willReturn(expected);
 
         var result = productService.getProducts();
 
         assertThat(result).containsExactlyElementsOf(expected);
+        then(productRepository).should().findAll(sortedById);
     }
 
     @Test
